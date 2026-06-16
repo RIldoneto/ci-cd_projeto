@@ -29,3 +29,12 @@ jobs:
       with:
         name: relatorio-testes
         path: test-report.txt
+
+  # Job 2: Valida se o Dockerfile está construindo corretamente (Sem dar Push)
+  Build:
+    needs: CI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build da Imagem Docker
+      run: docker build -t minha-api-teste:latest .
